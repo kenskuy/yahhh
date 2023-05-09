@@ -254,7 +254,7 @@ def info(update: Update, context: CallbackContext):
     rep = message.reply_text("<code>Getting info...</code>", parse_mode=ParseMode.HTML)
 
     text = (
-        f"╔═━「<b> HASIL 𝗕𝗠𝗞𝗚 :</b> 」\n"
+        f"╔═━「<b> HASIL 𝗕𝗠𝗞𝗚 </b> 」\n"
         f"🐒 ID: <code>{user.id}</code>\n"
         f"🐒 First Name: {html.escape(user.first_name)}"
     )
@@ -284,7 +284,7 @@ def info(update: Update, context: CallbackContext):
                     text += _stext.format("Admin")
     if user_id not in [bot.id, 777000, 1087968824]:
         userhp = hpmanager(user)
-        text += f"\n\n<b>Health:</b> <code>{userhp['earnedhp']}/{userhp['totalhp']}</code>\n[<i>{make_bar(int(userhp['percentage']))} </i>{userhp['percentage']}%]"
+        text += f"\n\n<b>Sisa Umur:</b> <code>{userhp['earnedhp']}/{userhp['totalhp']}</code>\n[<i>{make_bar(int(userhp['percentage']))} </i>{userhp['percentage']}%]"
 
     try:
         spamwtc = sw.get_ban(int(user.id))
