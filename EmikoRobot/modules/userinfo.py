@@ -251,7 +251,7 @@ def info(update: Update, context: CallbackContext):
     else:
         return
 
-    rep = message.reply_text("<code>Getting info...</code>", parse_mode=ParseMode.HTML)
+    rep = message.reply_text("<code>🗿Sabar yah bestie...</code>", parse_mode=ParseMode.HTML)
 
     text = (
         f"╔═━「<b> HASIL 𝗕𝗠𝗞𝗚 </b> 」\n"
