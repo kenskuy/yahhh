@@ -34,7 +34,7 @@ async def lastname(steal):
                     "```Error, report to @cemarasupport```"
                 )
                 return
-            if r.text.startswith("History"):
+            if r.text.startswith("**History**"):
                 respond = await conv.get_response()
                 await puki.edit(f"`{r.message}`")
                 await ubot.delete_messages(
