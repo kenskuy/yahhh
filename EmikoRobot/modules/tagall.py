@@ -11,7 +11,7 @@ from EmikoRobot import telethn as client
 spam_chats = []
 
 
-@client.on(events.NewMessage(pattern="^/tagall|@all|/all ?(.*)"))
+@client.on(events.NewMessage(pattern="^/tagall|/tag|@all|/all ?(.*)"))
 async def mentionall(event):
     chat_id = event.chat_id
     if event.is_private:
@@ -76,7 +76,7 @@ async def mentionall(event):
         pass
 
 
-@client.on(events.NewMessage(pattern="^/cancel$"))
+@client.on(events.NewMessage(pattern="^/batal$"))
 async def cancel_spam(event):
     is_admin = False
     try:
