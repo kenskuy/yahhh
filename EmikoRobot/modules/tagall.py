@@ -76,7 +76,7 @@ async def mentionall(event):
         pass
 
 
-@client.on(events.NewMessage(pattern="^/batal$"))
+@client.on(events.NewMessage(pattern="^/batal|/cancel$"))
 async def cancel_spam(event):
     is_admin = False
     try:
