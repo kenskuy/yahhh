@@ -10,7 +10,7 @@
       ],
     
    "logo":    "https://telegra.ph/file/84406e4ebefbab4aad1a1.jpg",  
-   "repository": "https://github.com/OTANCABUL/OtanRobot",
+   "repository": "https://github.com/kenskuy/yahhh",
    "addons": [
           {
          "options": {
@@ -24,7 +24,7 @@
       "url": "https://github.com/heroku/heroku-buildpack-python"
     },
     {
-      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+      "url": "https://github.com/interconnectit/heroku-buildpack-ffmpeg"
     }
   ],  
    "env": {
