@@ -53,7 +53,7 @@ asyncio
 cloudscraper
 dateparser
 pymongo
-dnspython
+dnspython==2.3.0
 secureme
 apscheduler
 emoji-country-flag
@@ -85,4 +85,5 @@ fuzzysearch
 img2pdf
 multicolorcaptcha
 git+https://github.com/python-telegram-bot/ptbcontrib.git
-httpx==0.13.3
+httpx==0.24.1
+
