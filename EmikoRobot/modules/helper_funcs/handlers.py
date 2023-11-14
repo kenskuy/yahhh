@@ -1,4 +1,4 @@
-import EmikoRobot.modules.sql.blacklistusers_sql as sql
+, EmikoRobot.modules.sql.blacklistusers_sql as sql
 from EmikoRobot import ALLOW_EXCL
 from EmikoRobot import DEV_USERS, DRAGONS, DEMONS, TIGERS, WOLVES
 
@@ -15,7 +15,7 @@ from pyrate_limiter import (
 if ALLOW_EXCL:
     CMD_STARTERS = ("/", "!", "~", ".")
 else:
-    CMD_STARTERS = ("/", "!", "~", ".")
+    CMD_STARTERS = ("/", "!", "~", ".",)
 
 
 class AntiSpam:
