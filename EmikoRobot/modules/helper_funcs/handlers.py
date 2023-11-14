@@ -1,4 +1,4 @@
-EmikoRobot.modules.sql.blacklistusers_sql as sql
+import EmikoRobot.modules.sql.blacklistusers_sql as sql
 from EmikoRobot import ALLOW_EXCL
 from EmikoRobot import DEV_USERS, DRAGONS, DEMONS, TIGERS, WOLVES
 
