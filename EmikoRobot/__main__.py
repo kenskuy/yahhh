@@ -81,15 +81,15 @@ def get_readable_time(seconds: int) -> str:
     return ping_time
 
 
-PM_TEXT = """
+PM_START_TEXT = """
 *Yoo mek {} !*
-✪ Ini bot untuk manage ama musikan di grup lu pada [✨](https://telegra.ph/file/6eb04c66d9afd5babd604.jpg)
+✪ Ini bot untuk manage ama musikan di grup lu pada [✨](https://telegra.ph/file/44f87cf793ec764be4108.jpg)
 ────────────────────────
 🐒 *Uptime:* `{}`
 🐒 `{}` *users, across* `{}` *chats.*
 ────────────────────────
 ✪ Ketik aja tuh tombol kan bisa baca lu pada.
-✪ powered by @OtanCabul 🐒
+✪ powered by @BukaOtan 🐒
 ✪ Bantuan /Help
 """
 
