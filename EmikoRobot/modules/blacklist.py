@@ -70,20 +70,26 @@ def blacklist(update, context):
 @user_admin
 @typing_action
 def add_blacklist(update, context):
+    dispatcher = context.dispatcher
     msg = update.effective_message
-    chat = update.effective_chat
     user = update.effective_user
     words = msg.text.split(None, 1)
 
-    conn = connected(context.bot, update, chat, user.id)
-    if conn:
-        chat_id = conn
-        chat_name = dispatcher.bot.getChat(conn).title
+
+    replied_msg = msg.reply_to_message
+    if replied_msg:
+        chat_id = replied_msg.chat.id
+        chat_name = replied_msg.chat.title
     else:
-        chat_id = update.effective_chat.id
-        if chat.type == "private":
-            return
-        chat_name = chat.title
+        conn = connected(context.bot, update, msg.chat, user.id)
+        if conn:
+            chat_id = conn
+            chat_name = dispatcher.bot.getChat(conn).title
+        else:
+            chat_id = msg.chat_id
+            if msg.chat.type == "private":
+                return
+            chat_name = msg.chat.title
 
     if len(words) > 1:
         text = words[1]
@@ -95,7 +101,7 @@ def add_blacklist(update, context):
 
         if len(to_blacklist) == 1:
             send_message(
-                update.effective_message,
+                replied_msg.reply_text if replied_msg else update.effective_message.reply_text,
                 "Added blacklist <code>{}</code> in chat: <b>{}</b>!".format(
                     html.escape(to_blacklist[0]),
                     html.escape(chat_name),
@@ -103,9 +109,9 @@ def add_blacklist(update, context):
                 parse_mode=ParseMode.HTML,
             )
 
-        else:
+    else:
             send_message(
-                update.effective_message,
+                replied_msg.reply_text if replied_msg else update.effective_message.reply_text,
                 "Added blacklist trigger: <code>{}</code> in <b>{}</b>!".format(
                     len(to_blacklist),
                     html.escape(chat_name),
@@ -115,7 +121,7 @@ def add_blacklist(update, context):
 
     else:
         send_message(
-            update.effective_message,
+            replied_msg.reply_text if replied_msg else update.effective_message.reply_text,
             "Tell me which words you would like to add in blacklist.",
         )
 
