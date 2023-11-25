@@ -85,43 +85,47 @@ def add_blacklist(update, context):
             return
         chat_name = chat.title
 
-    if len(words) > 1:
+    if msg.reply_to_message and len(words) == 1:
+        replied_text = msg.reply_to_message.text
+        to_blacklist = list(
+            {trigger.strip() for trigger in replied_text.split("\n") if trigger.strip()},
+        )
+    elif len(words) > 1:
         text = words[1]
         to_blacklist = list(
             {trigger.strip() for trigger in text.split("\n") if trigger.strip()},
         )
-        for trigger in to_blacklist:
-            sql.add_to_blacklist(chat_id, trigger.lower())
-
-        if len(to_blacklist) == 1:
-            send_message(
-                update.effective_message,
-                "Added blacklist <code>{}</code> in chat: <b>{}</b>!".format(
-                    html.escape(to_blacklist[0]),
-                    html.escape(chat_name),
-                ),
-                parse_mode=ParseMode.HTML,
-                reply_to_message_id=msg.message_id
-            )
-
-        else:
-            send_message(
-                update.effective_message,
-                "Added blacklist trigger: <code>{}</code> in <b>{}</b>!".format(
-                    len(to_blacklist),
-                    html.escape(chat_name),
-                ),
-                parse_mode=ParseMode.HTML,
-                reply_to_message_id=msg.message_id
-            )
-
     else:
         send_message(
             update.effective_message,
             "Apa kata blacklistnya njeng.",
             reply_to_message_id=msg.message_id
         )
+        return
 
+    for trigger in to_blacklist:
+        sql.add_to_blacklist(chat_id, trigger.lower())
+
+    if len(to_blacklist) == 1:
+        send_message(
+            update.effective_message,
+            "Added blacklist <code>{}</code> in chat: <b>{}</b>!".format(
+                html.escape(to_blacklist[0]),
+                html.escape(chat_name),
+            ),
+            parse_mode=ParseMode.HTML,
+            reply_to_message_id=msg.message_id
+        )
+    else:
+        send_message(
+            update.effective_message,
+            "Added blacklist trigger: <code>{}</code> in <b>{}</b>!".format(
+                len(to_blacklist),
+                html.escape(chat_name),
+            ),
+            parse_mode=ParseMode.HTML,
+            reply_to_message_id=msg.message_id
+        )
 
 @user_admin
 @typing_action
