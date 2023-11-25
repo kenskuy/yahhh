@@ -119,7 +119,7 @@ def add_blacklist(update, context):
                 parse_mode=ParseMode.HTML,
             )
 
-    else:
+     else:
         send_message(
             replied_msg.reply_text if replied_msg else update.effective_message.reply_text,
             "Tell me which words you would like to add in blacklist.",
