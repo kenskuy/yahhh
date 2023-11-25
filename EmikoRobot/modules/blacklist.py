@@ -75,7 +75,6 @@ def add_blacklist(update, context):
     user = update.effective_user
     words = msg.text.split(None, 1)
 
-
     replied_msg = msg.reply_to_message
     if replied_msg:
         chat_id = replied_msg.chat.id
@@ -94,7 +93,7 @@ def add_blacklist(update, context):
     if len(words) > 1:
         text = words[1]
         to_blacklist = list(
-            {trigger.strip() for trigger in text.split("\n") if trigger.strip()},
+            {trigger.strip() for trigger in text.split("\n") if trigger.strip()}
         )
         for trigger in to_blacklist:
             sql.add_to_blacklist(chat_id, trigger.lower())
@@ -108,8 +107,7 @@ def add_blacklist(update, context):
                 ),
                 parse_mode=ParseMode.HTML,
             )
-
-    else:
+        else:
             send_message(
                 replied_msg.reply_text if replied_msg else update.effective_message.reply_text,
                 "Added blacklist trigger: <code>{}</code> in <b>{}</b>!".format(
@@ -118,8 +116,7 @@ def add_blacklist(update, context):
                 ),
                 parse_mode=ParseMode.HTML,
             )
-
-     else:
+    else:
         send_message(
             replied_msg.reply_text if replied_msg else update.effective_message.reply_text,
             "Tell me which words you would like to add in blacklist.",
