@@ -89,7 +89,7 @@ PM_START_TEXT = """
 🐒 `{}` *users, across* `{}` *chats.*
 ────────────────────────
 ✪ Ketik aja tuh tombol kan bisa baca lu pada.
-✪ powered by @massef_bos 🐒
+✪ powered by @BukanOtan 🐒
 ✪ Bantuan /Help
 """
 
